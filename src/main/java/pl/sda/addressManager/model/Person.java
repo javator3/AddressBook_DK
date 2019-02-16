@@ -14,6 +14,9 @@ public class Person {
     private StringProperty zipcode;
     private StringProperty telphone;
 
+    public Person() {
+    }
+
     public Person(String name, String lastname, String street, String city, String zipcode, String telphone) {
         this.name = new SimpleStringProperty(name);
         this.lastname = new SimpleStringProperty(lastname);

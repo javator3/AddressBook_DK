@@ -17,7 +17,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="210.0">
                <children>
-                  <TableView fx:id="personTb" layoutX="-12.0" layoutY="-7.0" prefHeight="398.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="personTb" layoutX="-12.0" layoutY="-7.0" onKeyReleased="#changeSelected" onMouseClicked="#changeSelected" prefHeight="398.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nameCol" prefWidth="126.0" text="Name" />
                       <TableColumn fx:id="lastnameCol" prefWidth="136.0" text="Lastname" />
@@ -51,7 +51,7 @@
                         <Label text="City" GridPane.rowIndex="3" />
                         <Label prefHeight="17.0" prefWidth="88.0" text="PostCode" GridPane.rowIndex="4" />
                         <Label text="Telephone" GridPane.rowIndex="5" />
-                        <Label fx:id="nameLB" GridPane.columnIndex="1" />
+                        <Label fx:id="nameLb" GridPane.columnIndex="1" />
                         <Label fx:id="lastNameLb" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="streetLb" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="cityLb" GridPane.columnIndex="1" GridPane.rowIndex="3" />

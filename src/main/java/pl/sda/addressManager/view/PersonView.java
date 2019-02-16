@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.sda.addressManager.controller.PersonManagerController;
 import pl.sda.addressManager.controller.VerticalBoxController;
 import pl.sda.addressManager.model.Person;
 
@@ -44,20 +45,21 @@ public class PersonView {
 
     }
 
-    public void loadNewPersonView(){
-        FXMLLoader content = new FXMLLoader(getClass().getResource("/PersonManager.fxml"));
-        Parent root2 = null;
+    public void loadNewPersonView(Person selectedPerson){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/PersonManager.fxml"));
         try {
-            root2 = content.load();
+            loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage stage = new Stage();
-        content.getRoot();
-        stage.setResizable(false);
-        stage.setTitle("Add Worker");
-        stage.setScene(new Scene(root2));
-        stage.showAndWait();
-
+        Parent root = loader.getRoot();
+        Stage secondStage = new Stage();
+        secondStage.setTitle("Person Management");
+        secondStage.setResizable(false);
+        secondStage.setScene(new Scene(root));
+        PersonManagerController personManagerController = loader.getController();
+        personManagerController.setPersonView(this, selectedPerson);
+        secondStage.show();
     }
 }

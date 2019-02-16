@@ -21,13 +21,13 @@ public class VerticalBoxController implements Initializable {
     @FXML
     private Label nameLb;
     @FXML
-    private Label lastnameLb;
+    private Label lastNameLb;
     @FXML
     private Label streetLb;
     @FXML
     private Label cityLb;
     @FXML
-    private Label postcodeLb;
+    private Label postLb;
     @FXML
     private Label telephoneLb;
     @FXML
@@ -60,15 +60,44 @@ public class VerticalBoxController implements Initializable {
 
     public void deleteBnPress(){
 
+        personView.getPersonObservableList().remove(personTb.getSelectionModel().getSelectedItem());
     }
-    public void newBnPress(ActionEvent actionEvent){
-        personView.loadNewPersonView();
+    public void newBnPress(){
+        personView.loadNewPersonView(null);
     }
     public void editBnPress(){
-
+        if (personTb.getSelectionModel().getSelectedItem()!=null){
+            personView.loadNewPersonView(personTb.getSelectionModel().getSelectedItem());
+        }
     }
     public void saveBnPress(){
 
     }
+
+    public void changeSelected()
+    {
+        Person tmpPerson = personTb.getSelectionModel().getSelectedItem();
+
+        if (tmpPerson!=null) {
+
+            nameLb.setText(tmpPerson.getName());
+            lastNameLb.setText(tmpPerson.getLastname());
+            cityLb.setText(tmpPerson.getCity());
+            streetLb.setText(tmpPerson.getStreet());
+            telephoneLb.setText(tmpPerson.getTelphone());
+            postLb.setText(tmpPerson.getZipcode());
+
+        }
+        else{
+            nameLb.setText("");
+            lastNameLb.setText("");
+            cityLb.setText("");
+            streetLb.setText("");
+            telephoneLb.setText("");
+            postLb.setText("");
+        }
+
+    }
+
 
 }
