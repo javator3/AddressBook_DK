@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ public class PersonManagerController implements Initializable {
     private Button saveBn;
     @FXML
     private Button cancelBn;
+    @FXML
+    private Label headerLb;
 
     private PersonView personView;
     private Person currenPerson;
@@ -41,6 +44,7 @@ public class PersonManagerController implements Initializable {
         this.personView = personView;
         this.currenPerson = currenPerson;
         if (currenPerson!=null){
+            headerLb.setText("Editing Person");
             nameTf.setText(currenPerson.getName());
             lastnameTf.setText(currenPerson.getLastname());
             streetTf.setText(currenPerson.getStreet());
@@ -49,6 +53,7 @@ public class PersonManagerController implements Initializable {
             telephoneTf.setText(currenPerson.getTelphone());
         }
         else {
+            headerLb.setText("Add New Person");
             addmode = true;
             this.currenPerson = new Person("","","","","","");
         }

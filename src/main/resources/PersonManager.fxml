@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="paneEdit" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.sda.addressManager.controller.PersonManagerController">
    <children>
       <GridPane layoutX="56.0" layoutY="90.0" prefHeight="235.0" prefWidth="502.0">
@@ -40,7 +39,7 @@
             <TextField fx:id="telephoneTf" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Label layoutX="150.0" layoutY="23.0" text="Add new Person" textFill="#e80909">
+      <Label fx:id="headerLb" layoutX="150.0" layoutY="23.0" text="Add new Person" textFill="#e80909">
          <font>
             <Font size="39.0" />
          </font>
