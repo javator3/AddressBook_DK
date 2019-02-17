@@ -30,47 +30,42 @@ public class PersonManagerController {
     private Label headerLb;
 
     private PersonView personView;
-    private Person currenPerson;
-    private boolean addmode = false;
+    private Person currentPerson;
+    private boolean addMode = false;
 
-    public void setPersonView(PersonView personView, Person currenPerson)
-    {
+    public void setPersonView(PersonView personView, Person currentPerson) {
         this.personView = personView;
-        this.currenPerson = currenPerson;
-        if (currenPerson!=null){
+        this.currentPerson = currentPerson;
+        if (currentPerson != null) {
             headerLb.setText("Editing Person");
-            nameTf.setText(currenPerson.getName());
-            lastnameTf.setText(currenPerson.getLastname());
-            streetTf.setText(currenPerson.getStreet());
-            cityTf.setText(currenPerson.getCity());
-            zipCodeTf.setText(currenPerson.getZipcode());
-            telephoneTf.setText(currenPerson.getTelphone());
-        }
-        else {
+            nameTf.setText(currentPerson.getName());
+            lastnameTf.setText(currentPerson.getLastname());
+            streetTf.setText(currentPerson.getStreet());
+            cityTf.setText(currentPerson.getCity());
+            zipCodeTf.setText(currentPerson.getZipcode());
+            telephoneTf.setText(currentPerson.getTelphone());
+        } else {
             headerLb.setText("Add New Person");
-            addmode = true;
-            this.currenPerson = new Person("","","","","","");
+            addMode = true;
+            this.currentPerson = new Person("", "", "", "", "", "");
         }
     }
 
-
-    public void saveBnPress(ActionEvent actionEvent) {
-        currenPerson.setName(nameTf.getText());
-        currenPerson.setLastname(lastnameTf.getText());
-        currenPerson.setStreet(streetTf.getText());
-        currenPerson.setCity(cityTf.getText());
-        currenPerson.setZipcode(zipCodeTf.getText());
-        currenPerson.setTelphone(telephoneTf.getText());
-        if (addmode) {
-           personView.getPersonObservableList().add(currenPerson);
+    public void saveBnPress() {
+        currentPerson.setName(nameTf.getText());
+        currentPerson.setLastname(lastnameTf.getText());
+        currentPerson.setStreet(streetTf.getText());
+        currentPerson.setCity(cityTf.getText());
+        currentPerson.setZipcode(zipCodeTf.getText());
+        currentPerson.setTelphone(telephoneTf.getText());
+        if (addMode) {
+            personView.getPersonObservableList().add(currentPerson);
         }
-        Stage currentStage = (Stage)saveBn.getScene().getWindow();
-        currentStage.close();
+        cancelBnPress();
     }
 
-    public void cancelBnPress(){
-        Stage currentStage = (Stage)cancelBn.getScene().getWindow();
+    public void cancelBnPress() {
+        Stage currentStage = (Stage) cancelBn.getScene().getWindow();
         currentStage.close();
-
     }
 }

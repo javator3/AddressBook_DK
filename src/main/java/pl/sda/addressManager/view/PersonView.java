@@ -14,6 +14,11 @@ import java.io.IOException;
 
 public class PersonView {
     private Stage primaryStage;
+
+    public void setPersonObservableList(ObservableList<Person> personObservableList) {
+        this.personObservableList = personObservableList;
+    }
+
     private ObservableList<Person> personObservableList=
             FXCollections.observableArrayList();
 
@@ -57,9 +62,11 @@ public class PersonView {
         Stage secondStage = new Stage();
         secondStage.setTitle("Person Management");
         secondStage.setResizable(false);
+        secondStage.initOwner(primaryStage);
         secondStage.setScene(new Scene(root));
         PersonManagerController personManagerController = loader.getController();
         personManagerController.setPersonView(this, selectedPerson);
-        secondStage.show();
+
+        secondStage.showAndWait();
     }
 }

@@ -15,6 +15,12 @@ public class Person {
     private StringProperty telphone;
 
     public Person() {
+        this.name = new SimpleStringProperty();
+        this.lastname = new SimpleStringProperty();
+        this.street = new SimpleStringProperty();
+        this.city = new SimpleStringProperty();
+        this.zipcode = new SimpleStringProperty();
+        this.telphone = new SimpleStringProperty();
     }
 
     public Person(String name, String lastname, String street, String city, String zipcode, String telphone) {
@@ -66,7 +72,9 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name.set(name);
+       this.name.set(name);
+
+
     }
 
     public String getLastname() {

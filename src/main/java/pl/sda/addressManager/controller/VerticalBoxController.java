@@ -1,13 +1,20 @@
 package pl.sda.addressManager.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import pl.sda.addressManager.model.Person;
 import pl.sda.addressManager.view.PersonView;
 
+import java.io.DataInput;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class VerticalBoxController implements Initializable {
@@ -56,15 +63,37 @@ public class VerticalBoxController implements Initializable {
         personView.getPersonObservableList().remove(personTb.getSelectionModel().getSelectedItem());
     }
     public void newBnPress(){
+        Stage currentStage = (Stage) newBn.getScene().getWindow();
+        currentStage.hide();
         personView.loadNewPersonView(null);
+        currentStage.show();
     }
     public void editBnPress(){
-        if (personTb.getSelectionModel().getSelectedItem()!=null){
-            personView.loadNewPersonView(personTb.getSelectionModel().getSelectedItem());
-        }
-    }
-    public void saveBnPress(){
 
+        if (personTb.getSelectionModel().getSelectedItem()!=null){
+            Stage currentStage = (Stage) newBn.getScene().getWindow();
+            currentStage.hide();
+            personView.loadNewPersonView(personTb.getSelectionModel().getSelectedItem());
+            currentStage.show();
+        }
+
+    }
+
+    public void loadBnPress() throws IOException {
+       // Person [] personList = new ObjectMapper().readValue(new File("workers.json"), Person[].class);
+       // ObservableList<Person> tmplist = FXCollections.observableArrayList();
+     //   for (Person p: personList
+      //       ) {
+       //     tmplist.add(p);
+      //  }
+      //  personView.setPersonObservableList(tmplist);
+        personView.setPersonObservableList(FXCollections.observableArrayList(new ObjectMapper().readValue(new File("workers.json"), Person[].class)));
+        personTb.setItems(personView.getPersonObservableList());
+
+    }
+
+    public void saveBnPress() throws IOException {
+           new ObjectMapper().writeValue(new File("workers.json"), personView.getPersonObservableList());
     }
 
     public void changeSelected()
@@ -79,7 +108,6 @@ public class VerticalBoxController implements Initializable {
             streetLb.setText(tmpPerson.getStreet());
             telephoneLb.setText(tmpPerson.getTelphone());
             postLb.setText(tmpPerson.getZipcode());
-
         }
         else{
             nameLb.setText("");
@@ -89,8 +117,5 @@ public class VerticalBoxController implements Initializable {
             telephoneLb.setText("");
             postLb.setText("");
         }
-
     }
-
-
 }

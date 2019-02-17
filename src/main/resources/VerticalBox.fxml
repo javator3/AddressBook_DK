@@ -59,6 +59,7 @@
                         <Label fx:id="telephoneLb" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
+                  <Button fx:id="loadBn" layoutX="405.0" layoutY="345.0" mnemonicParsing="false" onAction="#loadBnPress" text="Load" />
                </children>
             </AnchorPane>
         </items>
