@@ -2,20 +2,14 @@ package pl.sda.addressManager.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pl.sda.addressManager.model.Person;
 import pl.sda.addressManager.view.PersonView;
 
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class PersonManagerController implements Initializable {
+public class PersonManagerController {
     @FXML
     private TextField nameTf;
     @FXML
@@ -79,12 +73,4 @@ public class PersonManagerController implements Initializable {
         currentStage.close();
 
     }
-
-
-
-    public void initialize(URL location, ResourceBundle resources) {
-
-
-    }
-
 }

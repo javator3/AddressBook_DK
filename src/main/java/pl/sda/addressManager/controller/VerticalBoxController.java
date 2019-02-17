@@ -1,15 +1,8 @@
 package pl.sda.addressManager.controller;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import pl.sda.addressManager.model.Person;
 import pl.sda.addressManager.view.PersonView;
 
